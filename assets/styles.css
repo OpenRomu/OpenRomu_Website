@@ -1,0 +1,171 @@
+body {
+	height: 100%;
+	background: rgb(32,30,41);
+	background: linear-gradient(45deg, rgba(32,30,41,1) 0%, rgba(82,71,129,1) 100%);
+	background-attachment: fixed;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+
+p, h1, h2, li {
+	color: #ffffff;
+}
+
+a {
+	color: #00ffff;
+  	text-decoration: none;
+}
+
+a:link {
+	color : #BFDCFF;
+}
+
+a:hover {
+	color : #ffffff;
+}
+
+.app {
+	width: 80%;
+	margin: auto;
+	display: flex;
+}
+
+.side-header {
+	background-image: url(./header.png);
+	background-color: #2B4D6F;
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+
+.side-menu {
+	width: 250px;
+	background-color: #2B4D6F;
+}
+
+.layout-separator {
+	width: 10px;
+}
+
+.main-container {
+	background-color: #2B4D6F;
+	margin-top: 35px;
+	width: 60%;
+	flex-grow: 1;
+}
+
+.menu-container {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+nav {
+	height: 50px;
+}
+
+.menu-btn {
+	flex-grow: 1;
+	margin: auto;
+	list-style-type: none;
+	font-size: 16pt;
+	text-align: center;
+	color: #00FFFF;
+	background-color: #5E7DA3;
+}
+
+.menu-btn {
+  border-top: 1px solid #2B4D6F;
+	border-left: 1px solid #2B4D6F;
+	border-bottom: 1px solid #2B4D6F;
+}
+
+.menu-btn:last-child {
+	border-right: 1px solid #2B4D6F;
+}
+
+.menu-link {
+	color: #75A0CA;
+	margin: auto;
+	line-height: 52px;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.menu-active {
+	color: #FFFFFF;
+	margin: auto;
+	line-height: 52px;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.side-section {
+	border: 1px #FFFFFF;
+	border-style: none none solid none;
+}
+
+.side-group {
+	display: flex;
+  align-items: center;
+}
+
+.side-title {
+	color: #FFFFFF;
+	padding-left: 2px;
+	font-family: Arial, sans-serif;
+	border: 1px #FFFFFF;
+	border-style: none none solid none;
+}
+
+.side-version {
+	color: #FFFFFF;
+	display: inline;
+}
+
+.side-text {
+	color: #FFFFFF;
+	padding-left: 2px;
+	font-family: Arial, sans-serif;
+}
+
+.version-text {
+	color: #FFFFFF;
+	font-family: Arial, sans-serif;
+	text-align: center;
+	width: 50%;
+}
+
+.download-container {
+	text-align: center;
+	width: 50%;
+}
+
+.download-btn {
+	height: 40px;
+	color: #FFFFFF;
+	font-family: Arial, sans-serif;
+	background-color: #5E7DA3;
+}
+
+.scores-table {
+	width: 90%;
+  border-collapse: collapse;
+	color: #FFFFFF;
+}
+
+.scores-table td {
+	border: 1px #FFFFFF;
+	border-style: solid;
+}
+
+.orange-line {
+	background-color: #EF893F;
+	height: 13px;
+}
+
+#content {
+	padding: 10px;
+}
