@@ -122,7 +122,6 @@ nav {
 
 .side-version {
 	color: #FFFFFF;
-	display: inline;
 }
 
 .side-text {
@@ -135,17 +134,18 @@ nav {
 	color: #FFFFFF;
 	font-family: Arial, sans-serif;
 	text-align: center;
-	width: 50%;
 }
 
 .download-container {
-	text-align: center;
-	width: 50%;
 }
 
 .download-btn {
-	height: 40px;
+	text-align: center;
+	width: 60%;
 	color: #FFFFFF;
+	margin: auto;
+	display: block;
+	padding: 10px;
 	font-family: Arial, sans-serif;
 	background-color: #5E7DA3;
 }
