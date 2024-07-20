@@ -6,7 +6,7 @@ body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
 
-p, h1, h2, li {
+p, h1, h2, h3, li {
 	color: #ffffff;
 }
 
@@ -103,8 +103,7 @@ nav {
 }
 
 .side-section {
-	border: 1px #FFFFFF;
-	border-style: none none solid none;
+	margin: 5px;
 }
 
 .side-group {
