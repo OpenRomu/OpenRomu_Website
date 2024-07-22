@@ -1,7 +1,8 @@
 const nunjucks = require('nunjucks')
 const fs = require('fs')
 
-const MASTER_SERVER = '35.227.96.175:27337'
+const MASTER_SERVER = 'http://35.227.96.175:27337'
+const MASTER_SERVER_HTTPS = 'https://35.227.96.175:443'
 
 const outputPath = './dist'
 const templatesPath = './templates'
@@ -24,12 +25,14 @@ async function main() {
             pageContent = nunjucks.render(`${templatesPath}/pages/${page}.html`, archivesData)
         } else {
             let contentData = {
-                MASTER_SERVER
+                MASTER_SERVER,
+                MASTER_SERVER_HTTPS
             }
             pageContent = nunjucks.render(`${templatesPath}/pages/${page}.html`, contentData)
         }
         const pageData = {
             MASTER_SERVER,
+            MASTER_SERVER_HTTPS,
             navigation,
             pageContent
         }
