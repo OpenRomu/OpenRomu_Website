@@ -58,7 +58,7 @@
 <nav>
     <ul class="menu-container">
         <li class="menu-btn">
-            <a class="menu-active" href="./index.html">Accueil</a>
+            <a class="menu-link" href="./index.html">Accueil</a>
         </li>
         <li class="menu-btn">
             <a class="menu-link" href="./howtoplay.html">Comment Jouer</a>
@@ -74,24 +74,86 @@
                 <div class="orange-line"></div>
                 <!-- PAGE CONTENT -->
                 <div id="content"><!-- PAGE CONTENT -->
-<p>
-    OpenRomu est un remake de la communauté du jeu de tir RomuStrike, crée par Romu et Zebat en 2001.<br />
-    Le jeu d'origine est abandonné depuis 2015, mais les anciens membres et le staff se retrouvent toujours sur le discord.<br />
-    Plus d'informations sur le site officiel: www.romustrike.fr<br />
-</p>
-<h2>Un jeu pour la communauté</h2>
-<p>
-    OpenRomu est un FPS multijoueur francophone entièrement gratuit, ce jeu jouit d'une diversité de gameplay qui réunira tant les passionnés d'arcade, de doom-like que ceux de stratégie.
-    Il dispose de trois modes de jeu principaux : Le <b>Death-match</b>, où chaque joueur doit lutter pour sa propre survie. Le <b>Capture The Flag</b>, chaque équipe doit ramener le drapeau adverse afin de prendre l'avantage.
-    Ainsi que le <b>Team-deathmatch</b>, les différents joueurs ne réapparaitront qu'après la victoire totale d'une équipe, chaque tour se développe de manière stratégique afin de déborder l'adversaire le plus efficacement possible.
-</p>
-<widgetbot
-server="371665228095553536"
-channel="1141918897663115294"
-width="100%"
-height="500px"
-></widgetbot>
-<script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script></div>
+<form>
+  <h2>Créer un compte</h2>
+  <label for="username"><b>Pseudo</b></label><br />
+  <input id="username-input" type="text" placeholder="Pseudo" name="username" required><br />
+  <br />
+  <label for="email"><b>Email</b></label><br />
+  <input id="email-input" type="text" placeholder="utilisateur@gmail.com" name="email" required><br />
+  <br />
+  <label for="password"><b>Mot de passe</b></label><br />
+  <input id="password-input" type="password" placeholder="" name="password" required><br />
+  <br />
+  <label for="password-confirm"><b>Confirmez le mot de passe</b></label><br />
+  <input id="password-confirm-input" type="password" placeholder="" name="password-confirm" required><br />
+  <br />
+  <p>En cliquant sur "s'enregistrer", vous acceptez sans conditions nos <a href="#" style="color:dodgerblue">termes & conditions d'utilisation</a>.</p>
+  <button type="button" id="register-btn" onclick="register()">S'enregistrer</button>
+</form>
+<script>
+  function register() {
+    var notyf = new Notyf();
+    var registerURI = 'https://localhost:27337/v1/players'
+
+    // Username validation
+    var username = document.getElementById('username-input').value
+    if (username.length < 6) {
+      notyf.error('Le nom d utilisateur doit faire 6 caractères au minimum')
+      return
+    }
+
+    // Email validation
+    var email = document.getElementById('email-input').value.toLowerCase()
+    if (!email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+      notyf.error('L e-mail saisi semble invalide. Merci de respecter la forme identifiant@domain.tld')
+      return
+    }
+
+    // Password validation
+    var password = document.getElementById('password-input').value
+    if (password.length < 6) {
+      notyf.error('Le mot de passe doit faire 6 caractères au minimum')
+      return
+    }
+    var passwordConfirm = document.getElementById('password-confirm-input').value
+    if (password != passwordConfirm) {
+      notyf.error('Le mot de passe et la confirmation ne sont pas identiques')
+      return
+    }
+
+    // Register
+    var registerBtn = document.getElementById("register-btn");
+    registerBtn.disabled = true;
+    try {
+      fetch(registerURI, {
+        mode: 'cors',
+        method: 'POST',
+        headers: {
+          Accept: 'application.json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password
+        })
+      }).then(response => {
+        if (!response.ok) {
+          notyf.error(`HTTP error! status: ${response.status}`)
+          registerBtn.disabled = false;
+        } else {
+          notyf.success('Votre compte à été crée, vous pouvez jouer dès maintenant!')
+          registerBtn.disabled = false;
+          return response.json();
+        }
+      })
+    } catch (e) {
+      notyf.error(`Error! ${e}`)
+      registerBtn.disabled = false;
+    };
+  }
+</script></div>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
