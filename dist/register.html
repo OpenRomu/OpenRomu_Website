@@ -125,7 +125,7 @@
     var registerBtn = document.getElementById("register-btn");
     registerBtn.disabled = true;
     try {
-      fetch(MASTER_SERVER+'/v1/players', {
+      fetch('http://'+MASTER_SERVER+'/v1/players', {
         mode: 'cors',
         method: 'POST',
         headers: {
