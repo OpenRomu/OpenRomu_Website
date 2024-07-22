@@ -1,7 +1,6 @@
 <html>
     <head>
         <link rel="stylesheet" href="./assets/styles.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     </head>
     <body>
         <div class="app">
@@ -74,126 +73,26 @@
                 <div class="orange-line"></div>
                 <!-- PAGE CONTENT -->
                 <div id="content"><!-- PAGE CONTENT -->
-<form>
-  <h2>Créer un compte</h2>
-  <label for="username"><b>Pseudo</b></label><br />
-  <input id="username-input" type="text" placeholder="Pseudo" name="username" required><br />
-  <br />
-  <label for="email"><b>Email</b></label><br />
-  <input id="email-input" type="text" placeholder="utilisateur@gmail.com" name="email" required><br />
-  <br />
-  <label for="password"><b>Mot de passe</b></label><br />
-  <input id="password-input" type="password" placeholder="" name="password" required><br />
-  <br />
-  <label for="password-confirm"><b>Confirmez le mot de passe</b></label><br />
-  <input id="password-confirm-input" type="password" placeholder="" name="password-confirm" required><br />
-  <br />
-  <h3>Termes & Conditions</h3>
-  <ul id="terms_conditions">
-    <li>Les messages apparaissant sur le site, le chat, le jeu ou le forum expriment l'opinion de l'auteur et non celle d'OpenRomu, ni celle des autres. De plus, OpenRomu n'est pas responsable du contenu des messages qui s'y trouvent.</li>
-    <li>Vous acceptez de ne pas publier de contenu abusif, obscène, vulgaire, diffamatoire, choquant, menaçant, à caractère sexuel ou autrement illégal sur le site, le chat, le jeu et le discord qui pourrait violer les lois françaises ou internationales. Le faire peut entraîner un bannissement immédiat et permanent, avec notification à votre fournisseur d'accès Internet si jugé nécessaire.</li>
-    <li>Vous n'êtes autorisé qu'à avoir un seul compte dans le jeu, et vous ne pouvez pas changer de nom d'utilisateur.</li>
-    <li>Vous ne pouvez pas modifier les fichiers du jeu (modèles, armes, images, cartes) si vous les utilisez dans le jeu en ligne.</li>
-    <li>Vous vous engagez à ne pas exploiter les failles du jeu. Au lieu de cela, si vous en trouvez, nous vous encourageons à les signaler sur le discord, ou par email au staff du jeu.</li>
-    <li>Vous acceptez que des données personnelles (email, IP, cookies, informations du navigateur, du système et du matériel) soient collectées pour permettre le bon fonctionnement du site et du jeu (connexion au jeu, statistiques, modération). Ces données ne seront pas utilisées pour porter atteinte à vos libertés numériques.</li>
-    <li>L'adresse email fournie lors de votre inscription doit être valide et capable d'établir un contact avec vous. Elle doit donc être vérifiée régulièrement.</li>
-    <li>OpenRomu s'efforce de modérer le site, et le jeu et se réserve le droit de supprimer, pour toute raison, tous les messages perturbateurs ou inappropriés. Étant donné que chaque message apparaît en ligne immédiatement et que la modération est effectuée manuellement, il est impossible pour OpenRomu de revoir tous les messages. Compte tenu des contraintes, OpenRomu modérera le site, le chat, le jeu et le forum aussi activement que possible.</li>
-    <li>La suppression par OpenRomu d'un ou plusieurs messages du forum ne dégage pas l'auteur de la responsabilité du contenu des messages qu'il a postés sur le site, le chat, le jeu ou le forum.</li>
-    <li>Toutes les formes de publicité, et de promotion sont inappropriées et strictement interdites.</li>
-    <li>En cas de non-respect de ce code de conduite, OpenRomu se réserve le droit de bannir la personne concernée, de supprimer tous ses messages et de supprimer son compte.</li>
-    <li>Le jeu est gratuit, considérez qu'il est développé et modéré par des bénévoles contribuant de leur temps libre.</li>
-    <li>Nous nous engageons à respecter les libertés qui vous sont dues dans la mesure où elles sont conformes à ce règlement.</li>
-    <li>Sur OpenRomu, le contenu est crée par la communauté. Leurs créateurs peuvent donc décider de retirer n'importe quel asset pour n'importe quelle raison.</li>
-  </ul>
-  <p>En cliquant sur "s'enregistrer", vous acceptez nos <a href="#terms_conditions" style="color:dodgerblue">termes & conditions d'utilisation</a>.</p>
-  <button type="button" id="register-btn" onclick="register()">S'enregistrer</button>
-</form>
-<script>
-  function register() {
-    var notyf = new Notyf();
-
-    // Username validation
-    var username = document.getElementById('username-input').value
-    if (username.length < 6) {
-      notyf.error({
-        message: 'Le nom d utilisateur doit faire 6 caractères au minimum',
-        duration: 9000
-      })
-      return
-    }
-
-    // Email validation
-    var email = document.getElementById('email-input').value.toLowerCase()
-    if (!email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-      notyf.error({
-        message: 'L e-mail saisi semble invalide. Merci de respecter la forme identifiant@domain.tld',
-        duration: 9000
-      })
-      return
-    }
-
-    // Password validation
-    var password = document.getElementById('password-input').value
-    if (password.length < 6) {
-      notyf.error({
-        message: 'Le mot de passe doit faire 6 caractères au minimum',
-        duration: 9000
-      })
-      return
-    }
-    var passwordConfirm = document.getElementById('password-confirm-input').value
-    if (password != passwordConfirm) {
-      notyf.error({
-        message: 'La confirmation du mot de passe ne correspond pas au mot de passe saisi',
-        duration: 9000
-      })
-      return
-    }
-
-    // Register
-    var registerBtn = document.getElementById("register-btn");
-    registerBtn.disabled = true;
-    try {
-      fetch('https://'+MASTER_SERVER+'/v1/players', {
-        mode: 'cors',
-        method: 'POST',
-        headers: {
-          Accept: 'application.json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          username,
-          email,
-          password
-        })
-      }).then(response => {
-        if (!response.ok) {
-          notyf.error({
-            message: `HTTP error! status: ${response.status}`,
-            duration: 9000
-          })
-          registerBtn.disabled = false;
-        } else {
-          notyf.success({
-            message: 'Votre compte à été crée, vous pouvez jouer dès maintenant!',
-            duration: 9000
-          })
-          registerBtn.disabled = false;
-          return response.json();
-        }
-      })
-    } catch (e) {
-      notyf.success({
-        message: `Error! ${e}`,
-        duration: 9000
-      })
-      registerBtn.disabled = false;
-    };
-  }
-</script></div>
+<h2>Créer un compte</h2>
+<iframe id="register-frame" src="http://35.227.96.175:27337/register"></iframe>
+<h3>Termes & Conditions</h3>
+<ul id="terms_conditions">
+  <li>Les messages apparaissant sur le site, le chat, le jeu ou le forum expriment l'opinion de l'auteur et non celle d'OpenRomu, ni celle des autres. De plus, OpenRomu n'est pas responsable du contenu des messages qui s'y trouvent.</li>
+  <li>Vous acceptez de ne pas publier de contenu abusif, obscène, vulgaire, diffamatoire, choquant, menaçant, à caractère sexuel ou autrement illégal sur le site, le chat, le jeu et le discord qui pourrait violer les lois françaises ou internationales. Le faire peut entraîner un bannissement immédiat et permanent, avec notification à votre fournisseur d'accès Internet si jugé nécessaire.</li>
+  <li>Vous n'êtes autorisé qu'à avoir un seul compte dans le jeu, et vous ne pouvez pas changer de nom d'utilisateur.</li>
+  <li>Vous ne pouvez pas modifier les fichiers du jeu (modèles, armes, images, cartes) si vous les utilisez dans le jeu en ligne.</li>
+  <li>Vous vous engagez à ne pas exploiter les failles du jeu. Au lieu de cela, si vous en trouvez, nous vous encourageons à les signaler sur le discord, ou par email au staff du jeu.</li>
+  <li>Vous acceptez que des données personnelles (email, IP, cookies, informations du navigateur, du système et du matériel) soient collectées pour permettre le bon fonctionnement du site et du jeu (connexion au jeu, statistiques, modération). Ces données ne seront pas utilisées pour porter atteinte à vos libertés numériques.</li>
+  <li>L'adresse email fournie lors de votre inscription doit être valide et capable d'établir un contact avec vous. Elle doit donc être vérifiée régulièrement.</li>
+  <li>OpenRomu s'efforce de modérer le site, et le jeu et se réserve le droit de supprimer, pour toute raison, tous les messages perturbateurs ou inappropriés. Étant donné que chaque message apparaît en ligne immédiatement et que la modération est effectuée manuellement, il est impossible pour OpenRomu de revoir tous les messages. Compte tenu des contraintes, OpenRomu modérera le site, le chat, le jeu et le forum aussi activement que possible.</li>
+  <li>La suppression par OpenRomu d'un ou plusieurs messages du forum ne dégage pas l'auteur de la responsabilité du contenu des messages qu'il a postés sur le site, le chat, le jeu ou le forum.</li>
+  <li>Toutes les formes de publicité, et de promotion sont inappropriées et strictement interdites.</li>
+  <li>En cas de non-respect de ce code de conduite, OpenRomu se réserve le droit de bannir la personne concernée, de supprimer tous ses messages et de supprimer son compte.</li>
+  <li>Le jeu est gratuit, considérez qu'il est développé et modéré par des bénévoles contribuant de leur temps libre.</li>
+  <li>Nous nous engageons à respecter les libertés qui vous sont dues dans la mesure où elles sont conformes à ce règlement.</li>
+  <li>Sur OpenRomu, le contenu est crée par la communauté. Leurs créateurs peuvent donc décider de retirer n'importe quel asset pour n'importe quelle raison.</li>
+</ul></div>
             </div>
         </div>
-        <script> var MASTER_SERVER = '35.227.96.175:27337' </script>
-        <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     </body>
 </html>
