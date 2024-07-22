@@ -74,7 +74,8 @@
                 <!-- PAGE CONTENT -->
                 <div id="content"><!-- PAGE CONTENT -->
 <h2>Créer un compte</h2>
-<iframe id="register-frame" src="http://35.227.96.175:27337/register"></iframe>
+<iframe id="register-frame" src="https://35.227.96.175:443/register"></iframe>
+<b><a id="iframe-help" onclick="openRegistration()" href="javascript:void(0);">Si l'encadré ne charge pas, merci de suivre ce lien</a></b>
 <h3>Termes & Conditions</h3>
 <ul id="terms_conditions">
   <li>Les messages apparaissant sur le site, le chat, le jeu ou le forum expriment l'opinion de l'auteur et non celle d'OpenRomu, ni celle des autres. De plus, OpenRomu n'est pas responsable du contenu des messages qui s'y trouvent.</li>
@@ -91,7 +92,15 @@
   <li>Le jeu est gratuit, considérez qu'il est développé et modéré par des bénévoles contribuant de leur temps libre.</li>
   <li>Nous nous engageons à respecter les libertés qui vous sont dues dans la mesure où elles sont conformes à ce règlement.</li>
   <li>Sur OpenRomu, le contenu est crée par la communauté. Leurs créateurs peuvent donc décider de retirer n'importe quel asset pour n'importe quelle raison.</li>
-</ul></div>
+</ul>
+<script>
+  document.getElementById("register-frame").ready = function() { 
+    document.getElementById("iframe-help").hidden = true;
+  };
+  function openRegistration() {
+    window.open('https://35.227.96.175:443/register')
+  }
+</script></div>
             </div>
         </div>
     </body>
