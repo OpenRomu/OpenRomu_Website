@@ -16,11 +16,15 @@ a {
 }
 
 a:link {
-	color : #BFDCFF;
+	color: #BFDCFF;
 }
 
 a:hover {
-	color : #ffffff;
+	color: #ffffff;
+}
+
+label {
+	color: #ffffff;
 }
 
 .app {

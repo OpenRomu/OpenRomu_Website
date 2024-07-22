@@ -1,0 +1,81 @@
+<!-- PAGE CONTENT -->
+<form>
+  <h2>Créer un compte</h2>
+  <label for="username"><b>Pseudo</b></label><br />
+  <input id="username-input" type="text" placeholder="Pseudo" name="username" required><br />
+  <br />
+  <label for="email"><b>Email</b></label><br />
+  <input id="email-input" type="text" placeholder="utilisateur@gmail.com" name="email" required><br />
+  <br />
+  <label for="password"><b>Mot de passe</b></label><br />
+  <input id="password-input" type="password" placeholder="" name="password" required><br />
+  <br />
+  <label for="password-confirm"><b>Confirmez le mot de passe</b></label><br />
+  <input id="password-confirm-input" type="password" placeholder="" name="password-confirm" required><br />
+  <br />
+  <p>En cliquant sur "s'enregistrer", vous acceptez sans conditions nos <a href="#" style="color:dodgerblue">termes & conditions d'utilisation</a>.</p>
+  <button type="button" id="register-btn" onclick="register()">S'enregistrer</button>
+</form>
+<script>
+  function register() {
+    var notyf = new Notyf();
+    var registerURI = 'https://localhost:27337/v1/players'
+
+    // Username validation
+    var username = document.getElementById('username-input').value
+    if (username.length < 6) {
+      notyf.error('Le nom d utilisateur doit faire 6 caractères au minimum')
+      return
+    }
+
+    // Email validation
+    var email = document.getElementById('email-input').value.toLowerCase()
+    if (!email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+      notyf.error('L e-mail saisi semble invalide. Merci de respecter la forme identifiant@domain.tld')
+      return
+    }
+
+    // Password validation
+    var password = document.getElementById('password-input').value
+    if (password.length < 6) {
+      notyf.error('Le mot de passe doit faire 6 caractères au minimum')
+      return
+    }
+    var passwordConfirm = document.getElementById('password-confirm-input').value
+    if (password != passwordConfirm) {
+      notyf.error('Le mot de passe et la confirmation ne sont pas identiques')
+      return
+    }
+
+    // Register
+    var registerBtn = document.getElementById("register-btn");
+    registerBtn.disabled = true;
+    try {
+      fetch(registerURI, {
+        mode: 'cors',
+        method: 'POST',
+        headers: {
+          Accept: 'application.json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password
+        })
+      }).then(response => {
+        if (!response.ok) {
+          notyf.error(`HTTP error! status: ${response.status}`)
+          registerBtn.disabled = false;
+        } else {
+          notyf.success('Votre compte à été crée, vous pouvez jouer dès maintenant!')
+          registerBtn.disabled = false;
+          return response.json();
+        }
+      })
+    } catch (e) {
+      notyf.error(`Error! ${e}`)
+      registerBtn.disabled = false;
+    };
+  }
+</script>
