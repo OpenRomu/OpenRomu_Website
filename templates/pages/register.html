@@ -19,7 +19,6 @@
 <script>
   function register() {
     var notyf = new Notyf();
-    var registerURI = 'https://localhost:27337/v1/players'
 
     // Username validation
     var username = document.getElementById('username-input').value
@@ -51,7 +50,7 @@
     var registerBtn = document.getElementById("register-btn");
     registerBtn.disabled = true;
     try {
-      fetch(registerURI, {
+      fetch(MASTER_SERVER+'/v1/players', {
         mode: 'cors',
         method: 'POST',
         headers: {
