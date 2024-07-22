@@ -64,6 +64,11 @@ label {
 	margin: 0;
 }
 
+#register-frame {
+	width: 100%;
+	height: 400px;
+}
+
 nav {
 	height: 50px;
 }

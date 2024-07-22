@@ -1,6 +1,8 @@
 const nunjucks = require('nunjucks')
 const fs = require('fs')
 
+const MASTER_SERVER = '35.227.96.175:27337'
+
 const outputPath = './dist'
 const templatesPath = './templates'
 const contentPath = './content'
@@ -21,9 +23,13 @@ async function main() {
             }
             pageContent = nunjucks.render(`${templatesPath}/pages/${page}.html`, archivesData)
         } else {
-            pageContent = await fs.readFileSync(`${templatesPath}/pages/${page}.html`, 'utf8')
+            let contentData = {
+                MASTER_SERVER
+            }
+            pageContent = nunjucks.render(`${templatesPath}/pages/${page}.html`, contentData)
         }
         const pageData = {
+            MASTER_SERVER,
             navigation,
             pageContent
         }
