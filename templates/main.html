@@ -29,7 +29,8 @@
                 <div class="side-section">
                     <h2 class="side-title">Status du Serveur</h2>
                     <p class="side-text">
-                        Serveur Maître: Up<br />
+                        Serveur Maître:<br />
+                        <b><span id="server-status">Inconnu</span></b><br />
                         <br />
                         <a href="./register.html"><b>Créer un compte</b></a>
                     </p>
@@ -58,5 +59,17 @@
                 <div id="content">{{pageContent|safe}}</div>
             </div>
         </div>
+        <script defer>
+            fetch('{{MASTER_SERVER_HTTPS}}/hc').then(async (response) => {
+                let serverStatus = document.getElementById("server-status");
+                if (!response.ok) {
+                    serverStatus.style = "color: red;"
+                    serverStatus.innerText = "DOWN"
+                } else {
+                    serverStatus.style = "color: green;"
+                    serverStatus.innerText = "UP"
+                }
+            })
+        </script>
     </body>
 </html>
