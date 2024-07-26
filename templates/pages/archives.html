@@ -13,6 +13,7 @@
     {% endfor %}
 </ul>
 <h2>Crées pour RS</h2>
+<a href="https://drive.google.com/file/d/1TAoqZlolkS6HS2umc6RhRV05hHUgveG8/view?usp=drive_link">Télécharger toutes les cartes</a>
 <ul>
     {% for map in maps.created %}
     <li><a href="{{map.link}}">{{map.name}}</a> {{ " crée par " if map.kind == "creation" else " modifiée pour RS par " }} {{map.creator}}</li>
