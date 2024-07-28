@@ -1,0 +1,137 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./assets/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+    </head>
+    <body>
+        <div class="app">
+            <!-- LEFT MENU -->
+            <div class="side-menu">
+                <div class="side-header">
+                    <span style="display: block; height: 80px;"></span>
+                    <img src="./assets/FRFlag.png">
+                    <span style="display: block; height: 40px;"></span>
+                </div>
+                <div class="side-section">
+                    <h2 class="side-title">Téléchargement</h2>
+                    <p class="version-text">
+                        OpenRomu<br />
+                        Version 1.0.0
+                    </p>
+                    <div class="download-container">
+                        <a class="download-btn" href="https://drive.google.com/file/d/1QywurYSSlZzZFZHnWiR02QiYDLVZuC02/view?usp=drive_link">
+                                TELECHARGER
+                        </a>
+                    </div>
+                    <p class="side-text" style="text-align: justify; text-justify: inter-word;">
+                        <b>Avant de lancer le jeu, réferez vous au tutoriel disponible dans la section "Comment Jouer"</b>
+                    </p>
+                </div>
+                <div class="side-section">
+                    <h2 class="side-title">Status du Serveur</h2>
+                    <p class="side-text">
+                        Serveur Maître:<br />
+                        <b><span id="server-status">Inconnu</span></b><br />
+                        <br />
+                        <a href="./register.html"><b>Créer un compte</b></a>
+                    </p>
+                </div>
+                <div class="side-section">
+                    <h2 class="side-title">Contact</h2>
+                    <p class="side-text">
+                        Si vous souhaitez partager des <b>archives</b> ou informations, ou créations avec OpenRomu:<br /><br />
+                        <b>Rejoignez notre <a href="https://discord.gg/cm8MvGTj8P">Discord</a><br /><br /></b>
+                        <b>Envoyez un mail à <a href="mailto:OpenRomu@gmail.com">OpenRomu@gmail.com</a><br /></b>
+                    </p>
+                </div>
+                <div class="side-section">
+                    <h2 class="side-title">Partagez!</h2>
+                    <p class="side-text">
+                        Vous appréciez OpenRomu ?<br />
+                        Parlez-en! Et la fréquentation augmentera.<br />
+                    </p>
+                </div>
+            </div>
+            <div class="layout-separator"></div>
+            <!-- MAIN CONTAINER -->
+            <div class="main-container">
+                
+<!-- NAVIGATION -->
+<nav>
+    <ul class="menu-container">
+        <li class="menu-btn">
+            <a class="menu-link" href="./index.html">Accueil</a>
+        </li>
+        <li class="menu-btn">
+            <a class="menu-link" href="./howtoplay.html">Comment Jouer</a>
+        </li>
+        <li class="menu-btn">
+            <a class="menu-active" href="./leaderboard.html">Classements</a>
+        </li>
+        <li class="menu-btn">
+            <a class="menu-link" href="./mapping.html">Mapping</a>
+        </li>
+        <li class="menu-btn">
+            <a class="menu-link" href="./archives.html">Archives</a>
+        </li>
+        <!--<li class="menu-btn">
+            <a class="menu-link" href="./scores.html">Scores</a>
+        </li>-->
+    </ul>
+</nav>
+                <div class="orange-line"></div>
+                <!-- PAGE CONTENT -->
+                <div id="content"><!-- PAGE CONTENT -->
+<h2>Classement des joueurs</h2>
+<table>
+  <thead>
+    <tr>
+      <th width="10%">#</th>
+      <th width="60%">Joueur</th>
+      <th width="10%">Kills</th>
+      <th width="10%">K/D Ratio</th>
+      <th width="10%">% Headshots</th>
+    </tr>
+  </thead>
+  <tbody id="scores-container">
+  </tbody>
+</table>
+<p>Les scores sont calculés sur les statistiques totales des joueurs depuis la création de leur compte.</p>
+<script>
+  fetch('https://35.227.96.175:443/v1/scores').then(async (response) => {
+      const body = await response.json()
+      let scoresContainer = document.getElementById("scores-container")
+      if (!response.ok) {
+        return
+      }
+      let ranking = 1;
+      for (const score of body) {
+        let kdRatio = score.deaths != 0 ? (score.kills / score.deaths) : '∞'
+        let hsPercent = score.headshots != 0 ? (score.kills / score.headshots) : 0
+        scoresContainer.innerHTML += `<tr><td>${ranking}</td><td>${score.username}</td><td>${score.kills}</td><td>${kdRatio}</td><td>${hsPercent}%</td></tr>`
+        ranking += 1;
+      }
+  })
+  document.getElementById("leaderboard-frame").ready = function() { 
+    document.getElementById("iframe-help").hidden = true;
+  };
+  function openRegistration() {
+    window.open('https://35.227.96.175:443/leaderboard')
+  }
+</script></div>
+            </div>
+        </div>
+        <script defer>
+            fetch('https://35.227.96.175:443/hc').then(async (response) => {
+                let serverStatus = document.getElementById("server-status");
+                if (!response.ok) {
+                    serverStatus.style = "color: red;"
+                    serverStatus.innerText = "DOWN"
+                } else {
+                    serverStatus.style = "color: green;"
+                    serverStatus.innerText = "UP"
+                }
+            })
+        </script>
+    </body>
+</html>
