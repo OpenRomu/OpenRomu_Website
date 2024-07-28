@@ -158,13 +158,13 @@ nav {
 	background-color: #5E7DA3;
 }
 
-.scores-table {
+table {
 	width: 90%;
   border-collapse: collapse;
 	color: #FFFFFF;
 }
 
-.scores-table td {
+table td, th {
 	border: 1px #FFFFFF;
 	border-style: solid;
 }
@@ -176,4 +176,12 @@ nav {
 
 #content {
 	padding: 10px;
+}
+
+.gallery {
+	display: flex;
+}
+
+.gallery-img {
+	height: 200px;
 }

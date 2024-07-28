@@ -1,0 +1,38 @@
+<!-- PAGE CONTENT -->
+<h2>Classement des joueurs</h2>
+<table>
+  <thead>
+    <tr>
+      <th width="10%">#</th>
+      <th width="60%">Joueur</th>
+      <th width="10%">Kills</th>
+      <th width="10%">K/D Ratio</th>
+      <th width="10%">% Headshots</th>
+    </tr>
+  </thead>
+  <tbody id="scores-container">
+  </tbody>
+</table>
+<p>Les scores sont calculés sur les statistiques totales des joueurs depuis la création de leur compte.</p>
+<script>
+  fetch('{{MASTER_SERVER_HTTPS}}/v1/scores').then(async (response) => {
+      const body = await response.json()
+      let scoresContainer = document.getElementById("scores-container")
+      if (!response.ok) {
+        return
+      }
+      let ranking = 1;
+      for (const score of body) {
+        let kdRatio = score.deaths != 0 ? (score.kills / score.deaths) : '∞'
+        let hsPercent = score.headshots != 0 ? (score.kills / score.headshots) : 0
+        scoresContainer.innerHTML += `<tr><td>${ranking}</td><td>${score.username}</td><td>${score.kills}</td><td>${kdRatio}</td><td>${hsPercent}%</td></tr>`
+        ranking += 1;
+      }
+  })
+  document.getElementById("leaderboard-frame").ready = function() { 
+    document.getElementById("iframe-help").hidden = true;
+  };
+  function openRegistration() {
+    window.open('{{MASTER_SERVER_HTTPS}}/leaderboard')
+  }
+</script>

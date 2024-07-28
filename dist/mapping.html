@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./assets/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+    </head>
+    <body>
+        <div class="app">
+            <!-- LEFT MENU -->
+            <div class="side-menu">
+                <div class="side-header">
+                    <span style="display: block; height: 80px;"></span>
+                    <img src="./assets/FRFlag.png">
+                    <span style="display: block; height: 40px;"></span>
+                </div>
+                <div class="side-section">
+                    <h2 class="side-title">Téléchargement</h2>
+                    <p class="version-text">
+                        OpenRomu<br />
+                        Version 1.0.0
+                    </p>
+                    <div class="download-container">
+                        <a class="download-btn" href="https://drive.google.com/file/d/1QywurYSSlZzZFZHnWiR02QiYDLVZuC02/view?usp=drive_link">
+                                TELECHARGER
+                        </a>
+                    </div>
+                    <p class="side-text" style="text-align: justify; text-justify: inter-word;">
+                        <b>Avant de lancer le jeu, réferez vous au tutoriel disponible dans la section "Comment Jouer"</b>
+                    </p>
+                </div>
+                <div class="side-section">
+                    <h2 class="side-title">Status du Serveur</h2>
+                    <p class="side-text">
+                        Serveur Maître:<br />
+                        <b><span id="server-status">Inconnu</span></b><br />
+                        <br />
+                        <a href="./register.html"><b>Créer un compte</b></a>
+                    </p>
+                </div>
+                <div class="side-section">
+                    <h2 class="side-title">Contact</h2>
+                    <p class="side-text">
+                        Si vous souhaitez partager des <b>archives</b> ou informations, ou créations avec OpenRomu:<br /><br />
+                        <b>Rejoignez notre <a href="https://discord.gg/cm8MvGTj8P">Discord</a><br /><br /></b>
+                        <b>Envoyez un mail à <a href="mailto:OpenRomu@gmail.com">OpenRomu@gmail.com</a><br /></b>
+                    </p>
+                </div>
+                <div class="side-section">
+                    <h2 class="side-title">Partagez!</h2>
+                    <p class="side-text">
+                        Vous appréciez OpenRomu ?<br />
+                        Parlez-en! Et la fréquentation augmentera.<br />
+                    </p>
+                </div>
+            </div>
+            <div class="layout-separator"></div>
+            <!-- MAIN CONTAINER -->
+            <div class="main-container">
+                
+<!-- NAVIGATION -->
+<nav>
+    <ul class="menu-container">
+        <li class="menu-btn">
+            <a class="menu-link" href="./index.html">Accueil</a>
+        </li>
+        <li class="menu-btn">
+            <a class="menu-link" href="./howtoplay.html">Comment Jouer</a>
+        </li>
+        <li class="menu-btn">
+            <a class="menu-link" href="./leaderboard.html">Classements</a>
+        </li>
+        <li class="menu-btn">
+            <a class="menu-active" href="./mapping.html">Mapping</a>
+        </li>
+        <li class="menu-btn">
+            <a class="menu-link" href="./archives.html">Archives</a>
+        </li>
+        <!--<li class="menu-btn">
+            <a class="menu-link" href="./scores.html">Scores</a>
+        </li>-->
+    </ul>
+</nav>
+                <div class="orange-line"></div>
+                <!-- PAGE CONTENT -->
+                <div id="content"><!-- PAGE CONTENT -->
+<h2>Créer des niveaux pour OpenRomu</h2>
+
+<p>
+  OpenRomu utilise le même format de cartes que le jeu "Half Life". Ainsi, il est possible d'utiliser les logiciels fournis pour ce jeu afin de créer des cartes pour OpenRomu.
+  Les plus connus sont:
+</p>
+<ul>
+  <li><a href="https://developer.valvesoftware.com/wiki/Half-Life_SDK">Valve Hammer</a></li>
+  <li><a href="https://jack.hlfx.ru/en/">J.A.C.K.</a></li>
+  <li><a href="https://trenchbroom.github.io/">Trenchbroom</a></li>
+</ul>
+<h3>Créer le niveau</h3>
+<p>
+  De nombreux tutoriaux sont disponibles sur internet pour apprendre a créer des niveaux avec ces outils.<br />
+  Pour les nostalgiques et débutants, <a href="./assets/SiteDuZero_Tutorial_Hammer.pdf">voici le pdf qui permet d'apprendre a créer des maps</a>, issu du Siteduzero de 2008 !<br />
+  <br />
+  Quel que soit l'outil que vous souhaitez utiliser, il vous faudra un fichier "FGD" pour configurer votre éditeur pour OpenRomu.<br />
+  Cela permet de n'afficher que les entités supportées par OpenRomu. Pour cela, il suffit de télécharger le <a href="https://drive.google.com/file/d/1wLCWaMOmz_9zmMEzUHSAcgFsyb-Egmfw/view?usp=drive_link">FGD OpenRomu ici</a><br />
+</p>
+<h3>Textures</h3>
+<p>
+  La plupart des cartes utilisent une partie du WAD issu du jeu Half Life, facilement trouvable en ligne.<br />
+  Cette solution n'est pas recommandée car la propriétée des textures appartient à Valve, et n'est autorisée que pour des cartes destinées au moteur GoldSrc.<br />
+  Il est également possible de trouver des WADs en ligne sur des sites de modding. Veillez a respecter la propriété de chacun lorseque vous utilisez des assets téléchargés.<br />
+</p>
+<h3>Export</h3>
+<p>
+  Les maps OpenRomu sont au format <b>.bsp</b>. Elles sont accompagnées d'un fichier contenant toutes les textures utilisées dans le niveau, au format <b>.wad</b><br />
+  Eventuellement, vous pouvez ajouter un fichier au format <b>.bmp</b> qui sera une capture d'écran de votre map pour la prévisualisation dans le jeu.
+</p>
+<h3>Entités & fonctions</h3>
+<p>
+  Pour l'instant, les seules entités présentes sont les différentes lumières, les échelles, et les illusions (faux murs).
+  Pour les spawns, les cartes utilisent: "spawn_deathmatch", "info_player_start" ou "info_player_deathmatch".
+  Historiquement, "info_player_start" représente les spawns de la team 1, et "info_player_deathmatch" la team 2.
+</p>
+<p>
+  N'oubliez pas de partager vos créations sur le discord!
+</p>
+</div>
+            </div>
+        </div>
+        <script defer>
+            fetch('https://35.227.96.175:443/hc').then(async (response) => {
+                let serverStatus = document.getElementById("server-status");
+                if (!response.ok) {
+                    serverStatus.style = "color: red;"
+                    serverStatus.innerText = "DOWN"
+                } else {
+                    serverStatus.style = "color: green;"
+                    serverStatus.innerText = "UP"
+                }
+            })
+        </script>
+    </body>
+</html>

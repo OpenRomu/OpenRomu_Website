@@ -10,7 +10,7 @@ const contentPath = './content'
 
 async function main() {
     nunjucks.configure({ autoescape: true })
-    const pages = ['index', 'howtoplay', 'archives', 'register' /* 'scores'*/]
+    const pages = ['index', 'howtoplay', 'leaderboard', 'archives', 'register', 'mapping']
     if (!fs.existsSync(outputPath)) fs.mkdirSync(outputPath)
     // Iterate on all pages, render them and export as HTML in outputPath
     for (const page of pages) {
