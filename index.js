@@ -1,8 +1,8 @@
 const nunjucks = require('nunjucks')
 const fs = require('fs')
 
-const MASTER_SERVER = 'http://35.227.96.175:27337'
-const MASTER_SERVER_HTTPS = 'https://35.227.96.175:443'
+const MASTER_SERVER = 'http://openromu.duckdns.org:27337'
+const MASTER_SERVER_HTTPS = 'https://openromu.duckdns.org:443'
 
 const outputPath = './dist'
 const templatesPath = './templates'
