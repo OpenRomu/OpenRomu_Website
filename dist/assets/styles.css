@@ -147,17 +147,19 @@ nav {
 }
 
 .download-container {
+	display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .download-btn {
-	text-align: center;
-	width: 60%;
-	color: #FFFFFF;
-	margin: auto;
-	display: block;
-	padding: 10px;
-	font-family: Arial, sans-serif;
+	padding: 5px;
 	background-color: #5E7DA3;
+}
+
+.download-btn-icon {
+	max-width: 30px;
 }
 
 table {
