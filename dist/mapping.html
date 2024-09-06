@@ -9,6 +9,8 @@
 
         gtag('config', 'G-XGTL9D3T55');
         </script>
+        <title>OpenRomu</title>
+        <link rel="icon" type="image/x-icon" href="./assets/OpenRomu.ico">
         <link rel="stylesheet" href="./assets/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
     </head>
@@ -25,12 +27,12 @@
                     <h2 class="side-title">Téléchargement</h2>
                     <p class="version-text">
                         OpenRomu<br />
-                        Version 1.0.0
+                        Version 1.1.1
                     </p>
                     <div class="download-container">
-                        <a href="https://drive.google.com/file/d/1PRhhvYXczA3IsvfE5NAi15FB1wjwzgMm/view?usp=sharing" class="download-btn"><img class="download-btn-icon" src="./assets/win.png" /></a>
-                        <a href="" class="download-btn"><img class="download-btn-icon" src="./assets/osx.png" /></a>
-                        <a href="" class="download-btn"><img class="download-btn-icon" src="./assets/linux.png" /></a>
+                        <a href="https://drive.google.com/file/d/13nWjgo-weCzcUU0zZD8RaVAHsWkZYJQS/view?usp=drive_link" class="download-btn"><img class="download-btn-icon" src="./assets/win.png" /></a>
+                        <a href="https://drive.google.com/file/d/1e15KNQ2M_g2HkMMBMbawIM0Lx5iAhkIx/view?usp=drive_link" class="download-btn"><img class="download-btn-icon" src="./assets/osx.png" /></a>
+                        <a href="https://drive.google.com/file/d/1jzsdrmyvtmAuJz_LXA2y5TZkYyRZUmqR/view?usp=drive_link" class="download-btn"><img class="download-btn-icon" src="./assets/linux.png" /></a>
                     </div>
                     <p class="side-text" style="text-align: justify; text-justify: inter-word;">
                         <b>Avant de lancer le jeu, réferez vous au tutoriel disponible dans la section "Comment Jouer"</b>
@@ -94,7 +96,7 @@
 <h2>Créer des niveaux pour OpenRomu</h2>
 
 <p>
-  OpenRomu utilise le même format de cartes que le jeu "Half Life". Ainsi, il est possible d'utiliser les logiciels fournis pour ce jeu afin de créer des cartes pour OpenRomu.
+  OpenRomu utilise le même format de cartes que le jeu "Half Life" (BSP v30). Ainsi, il est possible d'utiliser les logiciels fournis pour ce jeu afin de créer des cartes pour OpenRomu.
   Les plus connus sont:
 </p>
 <ul>
@@ -127,7 +129,15 @@
   Pour les spawns, les cartes utilisent: "spawn_deathmatch", "info_player_start" ou "info_player_deathmatch".
   Historiquement, "info_player_start" représente les spawns de la team 1, et "info_player_deathmatch" la team 2.
 </p>
+<h3>Exporter pour OpenRomu</h3>
 <p>
+  Les niveaux, textures, et ce qui va avec sont compressés au format ZIP, dans des fichier "*.pak".
+  Pour jouer à vos niveaux sur OpenRomu, veillez a respecter ce format.<br />
+  Un fichier meta.json doit exister a la racine de l'archive, et décrire son contenu<br />
+  Documentation du format de fichier meta.json <a href="https://tinyurl.com/2d8wmmv4">disponible ici</a>
+</p>
+<p>
+  Bientot un SDK pour faciliter la création et l'export des niveaux!
   N'oubliez pas de partager vos créations sur le discord!
 </p>
 </div>

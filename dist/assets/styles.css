@@ -154,7 +154,8 @@ nav {
 }
 
 .download-btn {
-
+	padding: 5px;
+	background-color: #5E7DA3;
 }
 
 .download-btn-icon {
