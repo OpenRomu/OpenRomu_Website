@@ -119,7 +119,7 @@
       for (const score of body) {
         let kdRatio = score.deaths != 0 ? (score.kills / score.deaths) : '∞'
         let hsPercent = score.headshots != 0 ? (score.kills / score.headshots) : 0
-        scoresContainer.innerHTML += `<tr><td>${ranking}</td><td>${score.username}</td><td>${score.kills}</td><td>${kdRatio}</td><td>${hsPercent}%</td></tr>`
+        scoresContainer.innerHTML += `<tr><td>${ranking}</td><td>${score.username}</td><td>${score.kills}</td><td>${kdRatio.toFixed(1)}</td><td>${hsPercent.toFixed(1)}%</td></tr>`
         ranking += 1;
       }
   })
