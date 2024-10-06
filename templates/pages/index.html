@@ -2,17 +2,20 @@
 <p>
     OpenRomu est un remake de la communauté du jeu de tir RomuStrike, crée par Romu et Zebat en 2001.<br />
     Le jeu d'origine est abandonné depuis 2015, mais les anciens membres et le staff se retrouvent toujours sur le discord.<br />
-    Plus d'informations sur le site officiel: www.romustrike.fr<br />
+    Plus d'informations sur le site officiel du jeu qui nous a amené a créer OpenRomu: www.romustrike.fr<br />
 </p>
-<div class="gallery">
-    <img class="gallery-img" src="./assets/screen1.png"></img>
-    <img class="gallery-img" src="./assets/screen3.png"></img>
-    <img class="gallery-img" src="./assets/screen2.png"></img>
-</div>
-<p>
-    Voici le remake de notre ancien jeu préféré, modernisé pour encore plus de fun.<br />
-    Créez un compte, téléchargez le jeu, et c'est reparti pour un tour... Amusez vous bien!
-</p>
+<h2>News</h2>
+<div id="news-container"></div>
+<section class="splide">
+    <div class="splide__track">
+        <ul class="splide__list">
+        <li class="splide__slide"><img src="./assets/screen1.png" /></li>
+        <li class="splide__slide"><img src="./assets/screen2.png" /></li>
+        <li class="splide__slide"><img src="./assets/screen3.png" /></li>
+        <li class="splide__slide"><img src="./assets/screen4.png" /></li>
+        </ul>
+    </div>
+</section>
 <h2>Discord</h2>
 <widgetbot
 server="371665228095553536"
@@ -21,3 +24,22 @@ width="100%"
 height="500px"
 ></widgetbot>
 <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+<script src=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script>
+    document.addEventListener( 'DOMContentLoaded', function() {
+      var splide = new Splide( '.splide' );
+      splide.mount();
+    } );
+</script>
+<script>
+    fetch('{{MASTER_SERVER_HTTPS}}/v1/news').then(async (response) => {
+        const body = await response.json()
+        let newsContainer = document.getElementById("news-container")
+        if (!response.ok) {
+          return
+        }
+        for (const article of body) {
+          newsContainer.innerHTML = `<h3>${article.title}</h3><p>${article.content}</p>` + newsContainer.innerHTML
+        }
+    })
+  </script>

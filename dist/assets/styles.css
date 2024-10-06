@@ -182,11 +182,12 @@ table td, th {
 	padding: 10px;
 }
 
-.gallery {
-	display: flex;
-	flex-flow: row wrap;
+.splide {
+	margin: 0 auto;
+	width: 50%;
+	height: 350px;
 }
-
-.gallery-img {
-	height: 200px;
+.splide img {
+	height: 100%;
+	width: 100%;
 }
