@@ -110,7 +110,7 @@
 </table>
 <p>Les scores sont calculés sur les statistiques totales des joueurs depuis la création de leur compte.</p>
 <script>
-  fetch('https://openromu.duckdns.org:443/v1/scores').then(async (response) => {
+  fetch('https://game.openromu.fr:443/v1/scores').then(async (response) => {
       const body = await response.json()
       let scoresContainer = document.getElementById("scores-container")
       if (!response.ok) {
@@ -128,13 +128,13 @@
     document.getElementById("iframe-help").hidden = true;
   };
   function openRegistration() {
-    window.open('https://openromu.duckdns.org:443/leaderboard')
+    window.open('https://game.openromu.fr:443/leaderboard')
   }
 </script></div>
             </div>
         </div>
         <script defer>
-            fetch('https://openromu.duckdns.org:443/hc').then(async (response) => {
+            fetch('https://game.openromu.fr:443/hc').then(async (response) => {
                 let serverStatus = document.getElementById("server-status");
                 if (!response.ok) {
                     serverStatus.style = "color: red;"
