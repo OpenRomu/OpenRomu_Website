@@ -95,7 +95,7 @@
                 <!-- PAGE CONTENT -->
                 <div id="content"><!-- PAGE CONTENT -->
 <h2>Créer un compte</h2>
-<iframe id="register-frame" src="https://openromu.duckdns.org:443/register"></iframe>
+<iframe id="register-frame" src="https://game.openromu.fr:443/register"></iframe>
 <b><a id="iframe-help" onclick="openRegistration()" href="javascript:void(0);">Si l'encadré ne charge pas, merci de suivre ce lien</a></b>
 <h3>Termes & Conditions</h3>
 <ul id="terms_conditions">
@@ -119,13 +119,13 @@
     document.getElementById("iframe-help").hidden = true;
   };
   function openRegistration() {
-    window.open('https://openromu.duckdns.org:443/register')
+    window.open('https://game.openromu.fr:443/register')
   }
 </script></div>
             </div>
         </div>
         <script defer>
-            fetch('https://openromu.duckdns.org:443/hc').then(async (response) => {
+            fetch('https://game.openromu.fr:443/hc').then(async (response) => {
                 let serverStatus = document.getElementById("server-status");
                 if (!response.ok) {
                     serverStatus.style = "color: red;"

@@ -1,8 +1,8 @@
 const nunjucks = require('nunjucks')
 const fs = require('fs')
 
-const MASTER_SERVER = 'http://openromu.duckdns.org:80'
-const MASTER_SERVER_HTTPS = 'https://openromu.duckdns.org:443'
+const MASTER_SERVER = 'http://game.openromu.fr:80'
+const MASTER_SERVER_HTTPS = 'https://game.openromu.fr:443'
 
 const outputPath = './dist'
 const templatesPath = './templates'
