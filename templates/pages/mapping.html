@@ -1,48 +1,42 @@
 <!-- PAGE CONTENT -->
-<h2>Créer des niveaux pour OpenRomu</h2>
+<h2>Mappez pour OpenRomu !</h2>
 
-<p>
-  OpenRomu utilise le même format de cartes que le jeu "Half Life" (BSP v30). Ainsi, il est possible d'utiliser les logiciels fournis pour ce jeu afin de créer des cartes pour OpenRomu.
-  Les plus connus sont:
-</p>
-<ul>
-  <li><a href="https://developer.valvesoftware.com/wiki/Half-Life_SDK">Valve Hammer</a></li>
-  <li><a href="https://jack.hlfx.ru/en/">J.A.C.K.</a></li>
-  <li><a href="https://trenchbroom.github.io/">Trenchbroom</a></li>
-</ul>
+<a class="download-btn" href="https://github.com/OpenRomu/OpenRomu_Mapping_SDK/releases">Téléchargement du SDK</a>
+
 <h3>Créer le niveau</h3>
-<p>
-  De nombreux tutoriaux sont disponibles sur internet pour apprendre a créer des niveaux avec ces outils.<br />
-  Pour les nostalgiques et débutants, <a href="./assets/SiteDuZero_Tutorial_Hammer.pdf">voici le pdf qui permet d'apprendre a créer des maps</a>, issu du Siteduzero de 2008 !<br />
-  <br />
-  Quel que soit l'outil que vous souhaitez utiliser, il vous faudra un fichier "FGD" pour configurer votre éditeur pour OpenRomu.<br />
-  Cela permet de n'afficher que les entités supportées par OpenRomu. Pour cela, il suffit de télécharger le <a href="https://drive.google.com/file/d/1wLCWaMOmz_9zmMEzUHSAcgFsyb-Egmfw/view?usp=drive_link">FGD OpenRomu ici</a><br />
-</p>
+<div class="split">
+  <div style="margin-right: 50px;">
+    <p>
+      OpenRomu utilise des cartes au format natif de Half-Life 1 (BSP), vous pouvez donc choisir parmi une sélection d'éditeurs tiers compatibles avec Half-Life, les plus connus étant:<br />
+    </p>
+    <ul>
+      <li><a href="https://developer.valvesoftware.com/wiki/Half-Life_SDK">Valve Hammer</a></li>
+      <li><a href="https://jack.hlfx.ru/en/">J.A.C.K.</a></li>
+      <li><a href="https://trenchbroom.github.io/">Trenchbroom</a></li>
+    </ul>
+    <p>
+      De nombreux tutoriaux sont disponibles sur internet pour apprendre a créer des niveaux avec ces outils.<br />
+      Pour les nostalgiques et débutants, <a href="./assets/SiteDuZero_Tutorial_Hammer.pdf">voici le pdf qui permet d'apprendre a créer des maps</a> sur Valve Hammer, issu du Siteduzero de 2008 !<br />
+      <br />
+      Quel que soit l'outil que vous souhaitez utiliser, il vous faudra un fichier "FGD" pour configurer votre éditeur pour OpenRomu.<br />
+      Cela permet de configurer votre éditeur pour n'afficher que les entités supportées par OpenRomu.<br />
+    </p>
+  </div>
+  <img style="width: 400px;" src="assets/Vhe_main_view.jpg" />
+</div>
 <h3>Textures</h3>
 <p>
-  La plupart des cartes utilisent une partie du WAD issu du jeu Half Life, facilement trouvable en ligne.<br />
-  Cette solution n'est pas recommandée car la propriétée des textures appartient à Valve, et n'est autorisée que pour des cartes destinées au moteur GoldSrc.<br />
-  Il est également possible de trouver des WADs en ligne sur des sites de modding. Veillez a respecter la propriété de chacun lorseque vous utilisez des assets téléchargés.<br />
+  OpenRomu utilise là aussi des textures au format natif de Half-Life 1 (WAD).<br />
+  Le jeu est fourni avec un WAD dont les textures sont libres de droit (CC0), ou ont été crées par la communauté.<br />
+  Le SDK possède une fonction qui vous permet d'ajouter vos propres textures et de créer un WAD custom à utiliser dans vos cartes.<br />
+  Il est également possible de trouver des WADs en ligne, mais veillez a respecter la propriété de chacun lorseque vous utilisez des assets téléchargés.<br />
 </p>
-<h3>Export</h3>
+<h3>Intégrer la map dans le jeu</h3>
 <p>
-  Les maps OpenRomu sont au format <b>.bsp</b>. Elles sont accompagnées d'un fichier contenant toutes les textures utilisées dans le niveau, au format <b>.wad</b><br />
-  Eventuellement, vous pouvez ajouter un fichier au format <b>.bmp</b> qui sera une capture d'écran de votre map pour la prévisualisation dans le jeu.
-</p>
-<h3>Entités & fonctions</h3>
-<p>
-  Pour l'instant, les seules entités présentes sont les différentes lumières, les échelles, et les illusions (faux murs).
-  Pour les spawns, les cartes utilisent: "spawn_deathmatch", "info_player_start" ou "info_player_deathmatch".
-  Historiquement, "info_player_start" représente les spawns de la team 1, et "info_player_deathmatch" la team 2.
-</p>
-<h3>Exporter pour OpenRomu</h3>
-<p>
-  Les niveaux, textures, et ce qui va avec sont compressés au format ZIP, dans des fichier "*.pak".
-  Pour jouer à vos niveaux sur OpenRomu, veillez a respecter ce format.<br />
-  Un fichier meta.json doit exister a la racine de l'archive, et décrire son contenu<br />
-  Documentation du format de fichier meta.json <a href="https://tinyurl.com/2d8wmmv4">disponible ici</a>
+  OpenRomu ne lit pas directement les fichiers de niveaux au format BSP, (bien qu'il soit capable de le faire via les outils de développement).<br />
+  Les cartes jouables en ligne et distribuées sont au format .PAK. Grâce au SDK, il est possible de convertir une carte BSP en fichier .PAK pour l'intégrer au jeu.<br />
+  Pour jouer en ligne à vos niveaux sur OpenRomu, veillez a respecter ce format.<br />
 </p>
 <p>
-  Bientot un SDK pour faciliter la création et l'export des niveaux!
   N'oubliez pas de partager vos créations sur le discord!
 </p>
