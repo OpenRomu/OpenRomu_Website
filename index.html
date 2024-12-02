@@ -13,6 +13,9 @@
         <link rel="icon" type="image/x-icon" href="./assets/OpenRomu.ico">
         <link rel="stylesheet" href="./assets/styles.css">
         <link href=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css " rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class="app">
@@ -112,12 +115,14 @@
     </div>
 </section>
 <h2>Discord</h2>
-<widgetbot
-server="371665228095553536"
-channel="1141918897663115294"
-width="100%"
-height="500px"
-></widgetbot>
+<div style="display: flex; align-items: center; justify-content: center;">
+  <widgetbot
+  server="371665228095553536"
+  channel="1141918897663115294"
+  width="80%"
+  height="400px"
+  ></widgetbot>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
 <script src=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <script>
@@ -140,6 +145,14 @@ height="500px"
   </script></div>
             </div>
         </div>
+        <!-- FOOTER -->
+<br />
+<div class="footer">
+    <p>
+        Vous rencontrez un problème avec le site, le jeu, ou un autre joueur?
+        <a href="#" onclick="window.open('https://forms.bluecatreports.com/nt9VW40x/openromu-|-signaler-un-bug', 'OpenRomu | Signaler un problème', 'width=800,height=600');">Signaler un problème</a>
+    </p>
+</div>
         <script defer>
             fetch('https://game.openromu.fr:443/hc').then(async (response) => {
                 let serverStatus = document.getElementById("server-status");
