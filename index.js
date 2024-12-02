@@ -15,6 +15,7 @@ async function main() {
     // Iterate on all pages, render them and export as HTML in outputPath
     for (const page of pages) {
         const navigation = nunjucks.render(`${templatesPath}/navigation.html`, { page })
+        const footer = nunjucks.render(`${templatesPath}/footer.html`, { page })
         let pageContent = null
         // Render page content (archive for examples load data from JSON)
         if (page === 'archives') {
@@ -34,6 +35,7 @@ async function main() {
             MASTER_SERVER,
             MASTER_SERVER_HTTPS,
             navigation,
+            footer,
             pageContent
         }
         const pageHtml = nunjucks.render(`${templatesPath}/main.html`, pageData)

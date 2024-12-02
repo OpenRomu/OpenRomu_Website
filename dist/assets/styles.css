@@ -3,10 +3,11 @@ body {
 	background: rgb(32,30,41);
 	background: linear-gradient(45deg, rgba(32,30,41,1) 0%, rgba(82,71,129,1) 100%);
 	background-attachment: fixed;
-	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 500;
 }
 
-p, h1, h2, h3, li {
+p, h1, h2, h3, h4, li {
 	color: #ffffff;
 }
 
@@ -125,7 +126,6 @@ nav {
 .side-title {
 	color: #FFFFFF;
 	padding-left: 2px;
-	font-family: Arial, sans-serif;
 	border: 1px #FFFFFF;
 	border-style: none none solid none;
 }
@@ -137,12 +137,10 @@ nav {
 .side-text {
 	color: #FFFFFF;
 	padding-left: 2px;
-	font-family: Arial, sans-serif;
 }
 
 .version-text {
 	color: #FFFFFF;
-	font-family: Arial, sans-serif;
 	text-align: center;
 }
 
@@ -194,4 +192,23 @@ table td, th {
 
 .split {
 	display: flex;
+}
+
+.footer {
+	margin: auto;
+	font-size: 8pt;
+	text-align: center;
+}
+
+.map-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.map-entry {
+	text-align: center;
+	border: solid 1px white;
+	width: 200px;
+	border-radius: 5px;
 }

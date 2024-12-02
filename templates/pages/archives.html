@@ -6,16 +6,24 @@
     {% endfor %}
 </ul>
 <h1>Maps</h1>
-<h2>Importées de CS</h2>
-<ul>
-    {% for map in maps.imported %}
-    <li><a href="{{map.link}}">{{map.name}}</a> par {{map.creator}}</li>
-    {% endfor %}
-</ul>
 <h2>Crées pour RS</h2>
-<a href="https://drive.google.com/file/d/1TAoqZlolkS6HS2umc6RhRV05hHUgveG8/view?usp=drive_link">Télécharger toutes les cartes</a>
-<ul>
+<a href="https://drive.google.com/file/d/1TAoqZlolkS6HS2umc6RhRV05hHUgveG8/view?usp=drive_link">Télécharger toutes les cartes</a><br /><br />
+<div class="map-container">
     {% for map in maps.created %}
-    <li><a href="{{map.link}}">{{map.name}}</a> {{ " crée par " if map.kind == "creation" else " modifiée pour RS par " }} {{map.creator}}</li>
+    <div class="map-entry">
+        <h3><a href="{{map.link}}">{{map.name}}</a></h3>
+        <h4>{{ " crée par " if map.kind == "creation" else " modifiée pour RS par " }} {{map.creator}}</h4>
+        <img src="assets/map_previews/{{map.name}}.bmp" onerror="this.onerror=null; this.src='assets/map_previews/NotFound.bmp'" />
+    </div>
     {% endfor %}
-</ul>
+</div>
+<h2>Importées de CS</h2>
+<div class="map-container">
+    {% for map in maps.imported %}
+    <div class="map-entry">
+        <h3><a href="{{map.link}}">{{map.name}}</a></h3>
+        <h4>par {{map.creator}}</h4>
+        <img src="{{map.preview}}" />
+    </div>
+    {% endfor %}
+</div>
